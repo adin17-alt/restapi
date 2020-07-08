@@ -1,4 +1,4 @@
-'use strick';
+'use strict';
 
 exports.ok = function(values, res) {
     var data = {
