@@ -37,12 +37,29 @@ exports.tambahMahasiswa = function(req, res) {
     var nama = req.body.nama;
     var jurusan = req.body.jurusan;
 
-    connection.query('INSERT INTO mhs (nim,nama,jurusan) VALUES (?,?,?)', [nim, nama, jurusan],
+    connection.query('INSERT INTO mhs (nim,nama,jurusan) VALUES(?,?,?)', [nim, nama, jurusan],
         function(error, rows, fields) {
             if (error) {
                 console.log(error);
             } else {
-                response.ok("Berhasil menambahkan data.", res);
+                response.ok("Berhasil menambahkan data", res)
+            }
+        });
+};
+
+// mengubah data berdasarkan id
+exports.ubahMahasiswa = function(req, res) {
+    var id = req.body.id;
+    var nim = req.body.nim;
+    var nama = req.body.nama;
+    var jurusan = req.body.jurusan;
+
+    connection.query('UPDATE mhs set nim=?, nama=?, jurusan=?', [nim, nama, jurusan],
+        function(error, rows, fields) {
+            if (error) {
+                console.log(error);
+            } else {
+                response.ok("Berhasil mengubah data", res)
             }
         });
 };
